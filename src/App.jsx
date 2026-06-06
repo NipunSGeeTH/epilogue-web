@@ -4,7 +4,7 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [loadProgress, setLoadProgress] = useState(0);
   const [splitLoader, setSplitLoader] = useState(false);
-  const [isDark, setIsDark] = useState(true);
+
   
   const [days, setDays] = useState('00');
   const [hours, setHours] = useState('00');
@@ -13,27 +13,7 @@ function App() {
   const heroRef = useRef(null);
   const cursorRef = useRef(null);
 
-  // Sync theme with system preference
-  useEffect(() => {
-    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-    
-    const applyTheme = (e) => {
-      const isDarkMode = e.matches;
-      setIsDark(isDarkMode);
-      if (isDarkMode) {
-        document.documentElement.classList.add('dark');
-      } else {
-        document.documentElement.classList.remove('dark');
-      }
-    };
 
-    // Apply initially
-    applyTheme(mediaQuery);
-
-    // Listen for changes
-    mediaQuery.addEventListener('change', applyTheme);
-    return () => mediaQuery.removeEventListener('change', applyTheme);
-  }, []);
 
   // Advanced Loader Simulation
   useEffect(() => {
@@ -187,7 +167,7 @@ function App() {
       </nav>
 
       {/* Cinematic Hero */}
-      <section ref={heroRef} className="relative min-h-screen flex items-center justify-center pt-24 overflow-hidden" id="hero-section" style={{ backgroundImage: `${isDark ? "linear-gradient(to bottom, rgba(12, 15, 15, 0.4), rgba(12, 15, 15, 0.8))" : "linear-gradient(to bottom, rgba(255, 255, 255, 0.6), rgba(249, 250, 251, 0.9))"}, url('https://lh3.googleusercontent.com/aida-public/AB6AXuDg5RVf7xiJnNIEIYa99jAgfMOqS7QaD3_tba_T9X7o4rPtNBpC2X6Ct1EJBNSQJb56-jFBRQF4y5xoQBd5qPDGBqMm21-974G4dw3SI5bgnhkdr0dKRdhDqq2xi134fSQRceybJJK9aGeoBgDfHxdECm5V5WgW3P5MfR1T2_P-fxVAf5pb4Ei3hlG6YuihmbX528lqua9cCmTlpylnQHy_ZvvWKROF3vvJh9aoFPTtP9CAvMMCTmGY15Ur9UkP1kRl7NWZ7gpmBDo')`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed' }}>
+      <section ref={heroRef} className="hero-bg relative min-h-screen flex items-center justify-center pt-24 overflow-hidden" id="hero-section">
         <div ref={cursorRef} id="cursor-glow"></div>
         <div className="relative z-10 text-center px-gutter max-w-container-max mx-auto flex flex-col items-center reveal">
           <p className="font-label-caps text-label-caps text-green-700 dark:text-green-400 mb-4 tracking-widest uppercase">The Ultimate Frequency</p>
