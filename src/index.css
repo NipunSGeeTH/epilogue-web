@@ -17,9 +17,16 @@
         box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
     }
     .neon-glow {
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.5), 0 0 20px rgba(255, 255, 255, 0.3);
+    }
+    .dark .neon-glow {
         text-shadow: 0 0 10px rgba(34, 255, 68, 0.5), 0 0 20px rgba(34, 255, 68, 0.3);
     }
     .border-glow:hover {
+        border-color: #15803d;
+        box-shadow: 0 0 15px rgba(21, 128, 61, 0.2);
+    }
+    .dark .border-glow:hover {
         border-color: #22ff44;
         box-shadow: 0 0 15px rgba(34, 255, 68, 0.2);
     }
@@ -56,7 +63,7 @@
     #advanced-loader {
         position: fixed;
         inset: 0;
-        background: #0c0f0f;
+        background: #f9fafb;
         z-index: 99999;
         display: flex;
         flex-direction: column;
@@ -64,14 +71,17 @@
         justify-content: center;
         transition: transform 1s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.5s;
     }
+    .dark #advanced-loader { background: #0c0f0f; }
+
     #loader-top, #loader-bottom {
         position: absolute;
         width: 100%;
         height: 50%;
-        background: #0c0f0f;
+        background: #f9fafb;
         transition: transform 1s cubic-bezier(0.77, 0, 0.175, 1);
         z-index: -1;
     }
+    .dark #loader-top, .dark #loader-bottom { background: #0c0f0f; }
     #loader-top { top: 0; }
     #loader-bottom { bottom: 0; }
     
@@ -94,9 +104,13 @@
     
     .soundwave-bar {
         width: 4px;
-        background: #22ff44;
+        background: #15803d;
         border-radius: 2px;
         animation: pulse-wave 1.2s ease-in-out infinite alternate;
+        box-shadow: 0 0 10px #15803d;
+    }
+    .dark .soundwave-bar {
+        background: #22ff44;
         box-shadow: 0 0 10px #22ff44;
     }
 
@@ -120,11 +134,12 @@
     .progress-container {
         width: 250px;
         height: 2px;
-        background: rgba(255,255,255,0.1);
+        background: rgba(0,0,0,0.1);
         margin-top: 16px;
         position: relative;
         overflow: hidden;
     }
+    .dark .progress-container { background: rgba(255,255,255,0.1); }
     
     .progress-bar {
         position: absolute;
@@ -132,9 +147,13 @@
         left: 0;
         height: 100%;
         width: 0%;
+        background: #15803d;
+        box-shadow: 0 0 10px #15803d;
+        transition: width 0.1s;
+    }
+    .dark .progress-bar {
         background: #22ff44;
         box-shadow: 0 0 10px #22ff44;
-        transition: width 0.1s;
     }
 
     /* Split Animation Classes */
@@ -163,10 +182,15 @@
         width: 150px;
         height: 150px;
         border-radius: 50%;
-        background: conic-gradient(#22ff44 0% 85%, transparent 85% 100%);
+        background: conic-gradient(#15803d 0% 85%, transparent 85% 100%);
         display: flex;
         align-items: center;
         justify-content: center;
+        box-shadow: 0 0 20px rgba(21, 128, 61, 0.2);
+        animation: pulse-glow-light 2s infinite alternate;
+    }
+    .dark .radial-progress {
+        background: conic-gradient(#22ff44 0% 85%, transparent 85% 100%);
         box-shadow: 0 0 20px rgba(34, 255, 68, 0.2);
         animation: pulse-glow 2s infinite alternate;
     }
@@ -190,6 +214,10 @@
     @keyframes pulse-glow {
         from { box-shadow: 0 0 10px rgba(34, 255, 68, 0.2); }
         to { box-shadow: 0 0 30px rgba(34, 255, 68, 0.5); }
+    }
+    @keyframes pulse-glow-light {
+        from { box-shadow: 0 0 10px rgba(21, 128, 61, 0.2); }
+        to { box-shadow: 0 0 30px rgba(21, 128, 61, 0.5); }
     }
 
     .floating-brand {

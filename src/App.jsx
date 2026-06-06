@@ -156,7 +156,7 @@ function App() {
               <div className="soundwave-bar"></div>
             </div>
             <div className="loading-text-container">
-              <p className="font-label-caps text-label-caps text-primary-container tracking-widest animate-pulse">Decrypting Epilogue '26...</p>
+              <p className="font-label-caps text-label-caps text-green-700 dark:text-primary-container tracking-widest animate-pulse">Decrypting Epilogue '26...</p>
               <div className="progress-container">
                 <div className="progress-bar" style={{ width: `${loadProgress}%` }}></div>
               </div>
@@ -172,17 +172,17 @@ function App() {
       {/* TopNavBar */}
       <nav className="fixed top-0 w-full z-50 bg-white/80 dark:bg-surface-container-lowest/80 backdrop-blur-xl border-b border-outline-variant/30 transition-all duration-300">
         <div className="flex justify-between items-center px-gutter py-4 max-w-container-max mx-auto">
-          <div className="font-headline-md text-headline-md tracking-tighter text-on-surface dark:text-primary-fixed cursor-pointer floating-brand">
+          <div className="font-headline-md text-headline-md tracking-tighter text-gray-900 dark:text-primary-fixed cursor-pointer floating-brand">
             EPILOGUE '26
           </div>
           <div className="hidden md:flex gap-8 items-center">
-            <a className="font-label-caps text-label-caps text-on-surface-variant dark:text-secondary-fixed-dim hover:text-primary-container transition-colors" href="#lineup">Lineup</a>
-            <a className="font-label-caps text-label-caps text-on-surface-variant dark:text-secondary-fixed-dim hover:text-primary-container transition-colors" href="#tickets">Tickets</a>
-            <a className="font-label-caps text-label-caps text-on-surface-variant dark:text-secondary-fixed-dim hover:text-primary-container transition-colors" href="#gallery">Gallery</a>
-            <a className="font-label-caps text-label-caps text-on-surface-variant dark:text-secondary-fixed-dim hover:text-primary-container transition-colors" href="#experience">Experience</a>
+            <a className="font-label-caps text-label-caps text-gray-600 dark:text-secondary-fixed-dim hover:text-green-700 dark:hover:text-primary-container transition-colors" href="#lineup">Lineup</a>
+            <a className="font-label-caps text-label-caps text-gray-600 dark:text-secondary-fixed-dim hover:text-green-700 dark:hover:text-primary-container transition-colors" href="#tickets">Tickets</a>
+            <a className="font-label-caps text-label-caps text-gray-600 dark:text-secondary-fixed-dim hover:text-green-700 dark:hover:text-primary-container transition-colors" href="#gallery">Gallery</a>
+            <a className="font-label-caps text-label-caps text-gray-600 dark:text-secondary-fixed-dim hover:text-green-700 dark:hover:text-primary-container transition-colors" href="#experience">Experience</a>
           </div>
           <div className="flex gap-4 items-center">
-            <button onClick={toggleTheme} className="text-on-surface dark:text-primary-fixed hover:backdrop-brightness-125 transition-all duration-300 active:scale-95" id="theme-toggle">
+            <button onClick={toggleTheme} className="text-gray-900 dark:text-primary-fixed hover:backdrop-brightness-125 transition-all duration-300 active:scale-95" id="theme-toggle">
               <span className="material-symbols-outlined">{isDark ? 'light_mode' : 'dark_mode'}</span>
             </button>
             <button className="bg-primary-container text-on-primary-fixed px-6 py-2 rounded font-label-caps text-label-caps hover:shadow-[0_0_15px_rgba(34,255,68,0.3)] transition-all flex items-center gap-2">
@@ -196,7 +196,7 @@ function App() {
       <section ref={heroRef} className="relative min-h-screen flex items-center justify-center pt-24 overflow-hidden" id="hero-section" style={{ backgroundImage: "linear-gradient(to bottom, rgba(12, 15, 15, 0.4), rgba(12, 15, 15, 0.8)), url('https://lh3.googleusercontent.com/aida-public/AB6AXuDg5RVf7xiJnNIEIYa99jAgfMOqS7QaD3_tba_T9X7o4rPtNBpC2X6Ct1EJBNSQJb56-jFBRQF4y5xoQBd5qPDGBqMm21-974G4dw3SI5bgnhkdr0dKRdhDqq2xi134fSQRceybJJK9aGeoBgDfHxdECm5V5WgW3P5MfR1T2_P-fxVAf5pb4Ei3hlG6YuihmbX528lqua9cCmTlpylnQHy_ZvvWKROF3vvJh9aoFPTtP9CAvMMCTmGY15Ur9UkP1kRl7NWZ7gpmBDo')", backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed' }}>
         <div ref={cursorRef} id="cursor-glow"></div>
         <div className="relative z-10 text-center px-gutter max-w-container-max mx-auto flex flex-col items-center reveal">
-          <p className="font-label-caps text-label-caps text-primary-container mb-4 tracking-widest uppercase">The Ultimate Frequency</p>
+          <p className="font-label-caps text-label-caps text-green-400 mb-4 tracking-widest uppercase">The Ultimate Frequency</p>
           <h1 className="font-display-lg text-display-lg text-white mb-8 neon-glow leading-none floating-brand">EPILOGUE '26</h1>
           {/* Countdown */}
           <div className="flex gap-6 mt-12 glass-panel p-8 rounded-xl border border-outline-variant/30">
@@ -227,7 +227,7 @@ function App() {
             <div className="space-y-4">
               <div className="flex justify-between items-center border-b border-outline-variant/30 pb-2">
                 <span className="font-label-caps text-label-caps">TIER 1</span>
-                <span className="font-body-md font-mono text-primary-container">2000 REMAINING</span>
+                <span className="font-body-md font-mono text-green-700 dark:text-primary-container">2000 REMAINING</span>
               </div>
               <div className="flex justify-between items-center border-b border-outline-variant/30 pb-2">
                 <span className="font-label-caps text-label-caps">TIER 2</span>
@@ -242,11 +242,11 @@ function App() {
           <div className="flex flex-col items-center">
             <div className="radial-progress">
               <div className="radial-content">
-                <span className="font-headline-lg text-headline-lg text-primary-container font-mono block leading-none">85%</span>
+                <span className="font-headline-lg text-headline-lg text-green-700 dark:text-primary-container font-mono block leading-none">85%</span>
                 <span className="font-label-caps text-label-caps text-secondary-container dark:text-secondary-fixed-dim">SOLD OUT</span>
               </div>
             </div>
-            <p className="font-label-caps text-label-caps text-primary-container animate-pulse mt-6">ONLY 15% REMAINING OF 15,000</p>
+            <p className="font-label-caps text-label-caps text-green-700 dark:text-primary-container animate-pulse mt-6">ONLY 15% REMAINING OF 15,000</p>
           </div>
         </div>
       </section>
@@ -254,9 +254,9 @@ function App() {
       {/* Lineup Section */}
       <section className="py-section-padding-desktop px-gutter reveal" id="lineup">
         <div className="max-w-container-max mx-auto">
-          <h2 className="font-display-lg text-display-lg mb-16 text-center text-on-surface/20 dark:text-on-surface/10 uppercase tracking-widest font-extrabold relative">
+          <h2 className="font-display-lg text-display-lg mb-16 text-center text-gray-900/10 dark:text-on-surface/10 uppercase tracking-widest font-extrabold relative">
             HEADLINING
-            <span className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 text-on-surface dark:text-white opacity-100 font-headline-md tracking-normal">HEADLINING</span>
+            <span className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 text-gray-900 dark:text-white opacity-100 font-headline-md tracking-normal">HEADLINING</span>
           </h2>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="relative group overflow-hidden rounded-2xl glass-panel border-glow transition-all duration-500 shadow-2xl">
@@ -269,23 +269,23 @@ function App() {
             </div>
             <div className="flex flex-col gap-8">
               <div className="glass-panel p-8 rounded-xl">
-                <h3 className="font-headline-md text-headline-md mb-4 text-on-surface">ABOUT THE ARTIST</h3>
-                <p className="font-body-lg text-body-lg text-on-surface/80 dark:text-secondary-fixed-dim mb-6 leading-relaxed">
+                <h3 className="font-headline-md text-headline-md mb-4 text-gray-900 dark:text-on-surface">ABOUT THE ARTIST</h3>
+                <p className="font-body-lg text-body-lg text-gray-700 dark:text-secondary-fixed-dim mb-6 leading-relaxed">
                   Experience the sonic evolution. Daddy returns to the main stage with a highly anticipated 90-minute set, blending their iconic rock anthems with new, experimental frequencies. Known for their high-energy performances and intricate musicality, this is a set designed to transcend boundaries.
                 </p>
                 <div className="flex gap-4">
-                  <span className="px-4 py-2 border border-outline-variant rounded font-label-caps text-label-caps text-on-surface/70 dark:text-secondary-fixed-dim hover:border-primary-container transition-colors cursor-pointer">ROCK</span>
-                  <span className="px-4 py-2 border border-outline-variant rounded font-label-caps text-label-caps text-on-surface/70 dark:text-secondary-fixed-dim hover:border-primary-container transition-colors cursor-pointer">ALTERNATIVE</span>
+                  <span className="px-4 py-2 border border-outline-variant rounded font-label-caps text-label-caps text-gray-600 dark:text-secondary-fixed-dim hover:border-green-700 dark:hover:border-primary-container transition-colors cursor-pointer">ROCK</span>
+                  <span className="px-4 py-2 border border-outline-variant rounded font-label-caps text-label-caps text-gray-600 dark:text-secondary-fixed-dim hover:border-green-700 dark:hover:border-primary-container transition-colors cursor-pointer">ALTERNATIVE</span>
                 </div>
               </div>
               <div className="grid grid-cols-2 gap-4">
-                <div className="glass-panel p-6 rounded-xl border-l-2 border-primary-container group hover:bg-primary-container/5 transition-colors">
-                  <h4 className="font-label-caps text-label-caps text-secondary-container dark:text-secondary-fixed-dim mb-2 group-hover:text-primary-container transition-colors">SET TIME</h4>
-                  <p className="font-headline-md text-headline-md font-mono text-on-surface">22:00</p>
+                <div className="glass-panel p-6 rounded-xl border-l-2 border-green-700 dark:border-primary-container group hover:bg-green-700/5 dark:hover:bg-primary-container/5 transition-colors">
+                  <h4 className="font-label-caps text-label-caps text-secondary-container dark:text-secondary-fixed-dim mb-2 group-hover:text-green-700 dark:group-hover:text-primary-container transition-colors">SET TIME</h4>
+                  <p className="font-headline-md text-headline-md font-mono text-gray-900 dark:text-on-surface">22:00</p>
                 </div>
-                <div className="glass-panel p-6 rounded-xl border-l-2 border-primary-container group hover:bg-primary-container/5 transition-colors">
-                  <h4 className="font-label-caps text-label-caps text-secondary-container dark:text-secondary-fixed-dim mb-2 group-hover:text-primary-container transition-colors">DURATION</h4>
-                  <p className="font-headline-md text-headline-md font-mono text-on-surface">90M</p>
+                <div className="glass-panel p-6 rounded-xl border-l-2 border-green-700 dark:border-primary-container group hover:bg-green-700/5 dark:hover:bg-primary-container/5 transition-colors">
+                  <h4 className="font-label-caps text-label-caps text-secondary-container dark:text-secondary-fixed-dim mb-2 group-hover:text-green-700 dark:group-hover:text-primary-container transition-colors">DURATION</h4>
+                  <p className="font-headline-md text-headline-md font-mono text-gray-900 dark:text-on-surface">90M</p>
                 </div>
               </div>
             </div>
@@ -296,9 +296,9 @@ function App() {
       {/* Gallery Section */}
       <section className="py-section-padding-desktop px-gutter reveal" id="gallery">
         <div className="max-w-container-max mx-auto">
-          <h2 className="font-display-lg text-display-lg mb-16 text-center text-on-surface/20 dark:text-on-surface/10 uppercase tracking-widest font-extrabold relative">
+          <h2 className="font-display-lg text-display-lg mb-16 text-center text-gray-900/10 dark:text-on-surface/10 uppercase tracking-widest font-extrabold relative">
             THE EXPERIENCE
-            <span className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 text-on-surface dark:text-white opacity-100 font-headline-md tracking-normal">THE EXPERIENCE</span>
+            <span className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 text-gray-900 dark:text-white opacity-100 font-headline-md tracking-normal">THE EXPERIENCE</span>
           </h2>
           <div className="columns-1 md:columns-2 gap-6 space-y-6">
             {/* Masonry Item 1 */}
@@ -316,9 +316,9 @@ function App() {
               </div>
             </div>
             {/* Text Block */}
-            <div className="break-inside-avoid glass-panel p-8 rounded-xl border-t border-primary-container/30 reveal">
-              <h3 className="font-headline-md text-headline-md mb-4 text-on-surface">IMMERSIVE DOMAIN</h3>
-              <p className="font-body-md text-body-md text-on-surface/80 dark:text-secondary-fixed-dim">
+            <div className="break-inside-avoid glass-panel p-8 rounded-xl border-t border-green-700/30 dark:border-primary-container/30 reveal">
+              <h3 className="font-headline-md text-headline-md mb-4 text-gray-900 dark:text-on-surface">IMMERSIVE DOMAIN</h3>
+              <p className="font-body-md text-body-md text-gray-700 dark:text-secondary-fixed-dim">
                 Step into a carefully curated environment where sound, light, and architecture converge. Epilogue '26 isn't just a concert; it's a sensory override designed for the digital age.
               </p>
             </div>
@@ -327,20 +327,20 @@ function App() {
       </section>
 
       {/* Footer */}
-      <footer className="w-full py-section-padding-desktop bg-surface dark:bg-surface-container-lowest border-t border-outline-variant/20 transition-colors duration-500 reveal">
+      <footer className="w-full py-section-padding-desktop bg-gray-50 dark:bg-surface-container-lowest border-t border-outline-variant/20 transition-colors duration-500 reveal">
         <div className="flex flex-col items-center gap-base px-gutter text-center max-w-container-max mx-auto">
-          <div className="font-headline-lg text-headline-lg text-on-surface dark:text-primary-fixed mb-4">
+          <div className="font-headline-lg text-headline-lg text-gray-900 dark:text-primary-fixed mb-4">
             EPILOGUE '26
           </div>
-          <div className="flex gap-4 mb-8 text-secondary-container dark:text-secondary-fixed-dim">
-            <a className="hover:text-primary-container transition-colors" href="#"><span className="material-symbols-outlined">mail</span> info@epilogue26.com</a>
-            <a className="hover:text-primary-container transition-colors" href="#"><span className="material-symbols-outlined">link</span> @epiloguefest</a>
+          <div className="flex gap-4 mb-8 text-gray-600 dark:text-secondary-fixed-dim">
+            <a className="hover:text-green-700 dark:hover:text-primary-container transition-colors" href="#"><span className="material-symbols-outlined">mail</span> info@epilogue26.com</a>
+            <a className="hover:text-green-700 dark:hover:text-primary-container transition-colors" href="#"><span className="material-symbols-outlined">link</span> @epiloguefest</a>
           </div>
           <div className="flex gap-6 mb-8">
-            <a className="font-body-md text-body-md text-on-surface-variant dark:text-secondary-fixed-dim hover:text-primary-fixed-dim transition-colors cursor-pointer" href="#">Privacy</a>
-            <a className="font-body-md text-body-md text-on-surface-variant dark:text-secondary-fixed-dim hover:text-primary-fixed-dim transition-colors cursor-pointer" href="#">Terms</a>
-            <a className="font-body-md text-body-md text-on-surface-variant dark:text-secondary-fixed-dim hover:text-primary-fixed-dim transition-colors cursor-pointer" href="#">Safety</a>
-            <a className="font-body-md text-body-md text-on-surface-variant dark:text-secondary-fixed-dim hover:text-primary-fixed-dim transition-colors cursor-pointer" href="#">Contact</a>
+            <a className="font-body-md text-body-md text-gray-600 dark:text-secondary-fixed-dim hover:text-green-700 dark:hover:text-primary-fixed-dim transition-colors cursor-pointer" href="#">Privacy</a>
+            <a className="font-body-md text-body-md text-gray-600 dark:text-secondary-fixed-dim hover:text-green-700 dark:hover:text-primary-fixed-dim transition-colors cursor-pointer" href="#">Terms</a>
+            <a className="font-body-md text-body-md text-gray-600 dark:text-secondary-fixed-dim hover:text-green-700 dark:hover:text-primary-fixed-dim transition-colors cursor-pointer" href="#">Safety</a>
+            <a className="font-body-md text-body-md text-gray-600 dark:text-secondary-fixed-dim hover:text-green-700 dark:hover:text-primary-fixed-dim transition-colors cursor-pointer" href="#">Contact</a>
           </div>
           <p className="font-label-caps text-label-caps text-secondary-container dark:text-secondary-fixed-dim">
             © 2026 EPILOGUE FESTIVAL. ALL RIGHTS RESERVED. HEADLINING: DADDY.
