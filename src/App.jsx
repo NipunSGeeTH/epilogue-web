@@ -137,7 +137,7 @@ function App() {
   }, []);
 
   return (
-    <>
+    <div className="overflow-x-hidden w-full relative min-h-screen">
       {loading && (
         <div id="advanced-loader" className={splitLoader ? 'split' : ''}>
           <div id="loader-top"></div>
@@ -341,7 +341,7 @@ function App() {
           </p>
         </div>
       </footer>
-    </>
+    </div>
   );
 }
 
