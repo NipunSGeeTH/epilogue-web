@@ -90,8 +90,22 @@ export default function Hero() {
   }, []);
 
   return (
-    <section ref={heroRef} className="hero-bg relative min-h-screen flex items-center pt-24 overflow-hidden z-10" id="hero-section">
+    <section ref={heroRef} className="relative min-h-screen flex items-center pt-24 overflow-hidden z-10 bg-[#0c0f0f]" id="hero-section">
       <div ref={cursorRef} id="cursor-glow"></div>
+      
+      {/* Background Video Player */}
+      <video
+        autoPlay
+        muted
+        loop
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover z-0 pointer-events-none opacity-30 select-none"
+      >
+        <source src={`${import.meta.env.BASE_URL}background_video_desktop.mp4`} type="video/mp4" />
+      </video>
+
+      {/* Dark Overlay to increase contrast for content readability */}
+      <div className="absolute inset-0 bg-[#0c0f0f]/40 z-0 pointer-events-none"></div>
       
       {/* Background 3D Parallax Band Image (Desktop Only) */}
       <div className="hidden lg:flex absolute inset-0 w-full h-full z-0 overflow-hidden pointer-events-none items-end justify-end select-none">

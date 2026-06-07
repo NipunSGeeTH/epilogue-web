@@ -72,7 +72,7 @@ export default function Organizer() {
             Founded on September 25, 2009, by undergraduates of the University of Moratuwa, MoraSpirit is the pioneering and premier university sports media portal in Sri Lanka. We empower university sports by fostering an unbiased sporting culture and bridging the gap between athletes and the community.
           </p>
           <p className="font-body-md text-sm sm:text-body-md text-gray-700 dark:text-secondary-fixed-dim leading-relaxed">
-            From our flagship events to our dedicated initiatives, our passionate crew of volunteer journalists, photographers, and editors work tirelessly to celebrate the spirit of university athletes.
+            MoraSpirit 360, a subsidiary of MoraSpirit, was born from the creativity and excellence within the MoraSpirit community. It serves as a platform where talented individuals come together to transform innovative ideas into unforgettable experiences, creating moments that inspire, entertain, and leave a lasting impression on every audience.
           </p>
           <div className="pt-4 space-y-4">
             <h4 className="font-label-caps text-xs text-gray-500 dark:text-gray-400 tracking-wider">Connect with our community</h4>

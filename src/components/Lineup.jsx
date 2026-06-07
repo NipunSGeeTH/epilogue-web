@@ -23,13 +23,13 @@ export default function Lineup() {
           </div>
           <div className="flex flex-col gap-8">
             <div className="glass-panel p-6 sm:p-8 rounded-xl">
-              <h3 className="font-headline-md text-xl sm:text-headline-md mb-4 text-gray-900 dark:text-on-surface">ABOUT THE ARTIST</h3>
+              <h3 className="font-headline-md text-xl sm:text-headline-md mb-4 text-gray-900 dark:text-on-surface">ABOUT THE BAND</h3>
               <p className="font-body-lg text-sm sm:text-body-lg text-gray-700 dark:text-secondary-fixed-dim mb-6 leading-relaxed">
                 Daddy is known for blending powerful pop-rock anthems with a constantly evolving sound. Their music is driven by passion, intensity, and a desire to push beyond what's expected. After setting the stage ablaze at Epilogue'23 with a performance that had the crowd on its feet, Daddy returns to the big stage, bringing the same passion, energy, and musical excellence once again. Get ready to witness the energy of Daddy as they take the stage at Epilogue '26, delivering a performance that will ignite the crowd and leave an unforgettable mark on the night.
               </p>
               <div className="flex gap-4">
-                <span className="px-4 py-2 border border-outline-variant rounded font-label-caps text-label-caps text-gray-600 dark:text-secondary-fixed-dim hover:border-green-700 dark:hover:border-primary-container transition-colors cursor-pointer">ROCK</span>
-                <span className="px-4 py-2 border border-outline-variant rounded font-label-caps text-label-caps text-gray-600 dark:text-secondary-fixed-dim hover:border-green-700 dark:hover:border-primary-container transition-colors cursor-pointer">ALTERNATIVE</span>
+                <span className="px-4 py-2 border border-outline-variant rounded font-label-caps text-label-caps text-gray-600 dark:text-secondary-fixed-dim hover:border-green-700 dark:hover:border-primary-container transition-colors cursor-pointer">ICONIC</span>
+                <span className="px-4 py-2 border border-outline-variant rounded font-label-caps text-label-caps text-gray-600 dark:text-secondary-fixed-dim hover:border-green-700 dark:hover:border-primary-container transition-colors cursor-pointer">LEGENDARY</span>
               </div>
             </div>
 
