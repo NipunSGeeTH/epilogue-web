@@ -91,12 +91,11 @@ function App() {
 
   // MoraSpirit Gallery images (representing the club)
   const galleryImages = [
-    { src: `${import.meta.env.BASE_URL}gallery/moraspirit_slug.jpg`, alt: 'Road to SLUG Championship Coverage', title: 'ROAD TO SLUG', category: 'EVENT COVERAGE' },
-    { src: `${import.meta.env.BASE_URL}gallery/moraspirit_victory_celebration.png`, alt: 'Inter-University Championship Victory Celebration', title: 'CHAMPIONS CELEBRATION', category: 'VICTORY' },
-    { src: `${import.meta.env.BASE_URL}gallery/moraspirit_rowing.jpg`, alt: 'Inter-University Rowing Championship on the Waters', title: 'THRILL ON WATERS', category: 'ROWING' },
-    { src: `${import.meta.env.BASE_URL}gallery/moraspirit_ceremony.jpg`, alt: 'Opening Ceremony of Sports Championships', title: 'GRAND OPENING', category: 'CEREMONY' },
-    { src: `${import.meta.env.BASE_URL}gallery/moraspirit_paralympics.png`, alt: 'Paralympic Athletics & Overcoming Challenges', title: 'BEYOND LIMITS', category: 'ATHLETICS' },
-    { src: `${import.meta.env.BASE_URL}gallery/moraspirit_olympic.png`, alt: 'Milestones of Sri Lankan Sports and Olympics', title: 'OLYMPIC MILESTONES', category: 'SPORTS HISTORY' },
+    { src: `${import.meta.env.BASE_URL}gallery/image1.jpeg`, alt: 'Epilogue Gallery 1' },
+    { src: `${import.meta.env.BASE_URL}gallery/image2.jpeg`, alt: 'Epilogue Gallery 2' },
+    { src: `${import.meta.env.BASE_URL}gallery/image3.jpeg`, alt: 'Epilogue Gallery 3' },
+    { src: `${import.meta.env.BASE_URL}gallery/image4.jpeg`, alt: 'Epilogue Gallery 4' },
+    { src: `${import.meta.env.BASE_URL}gallery/image5.jpeg`, alt: 'Epilogue Gallery 5' },
   ];
 
   // Lightbox state
@@ -445,15 +444,15 @@ function App() {
             />
           </div>
           <div className="hidden md:flex gap-8 items-center">
-            <a className="font-label-caps text-label-caps text-gray-600 dark:text-secondary-fixed-dim hover:text-green-700 dark:hover:text-primary-container transition-colors" href="#lineup">Lineup</a>
-            <a className="font-label-caps text-label-caps text-gray-600 dark:text-secondary-fixed-dim hover:text-green-700 dark:hover:text-primary-container transition-colors" href="#gallery">Gallery</a>
-            <a className="font-label-caps text-label-caps text-gray-600 dark:text-secondary-fixed-dim hover:text-green-700 dark:hover:text-primary-container transition-colors" href="#experience">Experience</a>
-            <a className="font-label-caps text-label-caps text-gray-600 dark:text-secondary-fixed-dim hover:text-green-700 dark:hover:text-primary-container transition-colors" href="#organizer">About Us</a>
+            <a className="font-sans text-sm md:text-base font-semibold tracking-wide text-gray-700 dark:text-gray-200 hover:text-green-700 dark:hover:text-primary-container transition-colors" href="#lineup">Lineup</a>
+            <a className="font-sans text-sm md:text-base font-semibold tracking-wide text-gray-700 dark:text-gray-200 hover:text-green-700 dark:hover:text-primary-container transition-colors" href="#gallery">Gallery</a>
+            <a className="font-sans text-sm md:text-base font-semibold tracking-wide text-gray-700 dark:text-gray-200 hover:text-green-700 dark:hover:text-primary-container transition-colors" href="#experience">Experience</a>
+            <a className="font-sans text-sm md:text-base font-semibold tracking-wide text-gray-700 dark:text-gray-200 hover:text-green-700 dark:hover:text-primary-container transition-colors" href="#organizer">About Us</a>
           </div>
           <div className="flex gap-3 items-center">
             <button 
               onClick={handleBuyTicketsClick}
-              className="bg-green-700 dark:bg-primary-container text-white dark:text-on-primary-fixed px-3 sm:px-6 py-2 rounded font-label-caps text-[10px] sm:text-label-caps hover:shadow-[0_0_20px_rgba(34,255,68,0.4)] hover:scale-105 transition-all duration-300 flex items-center gap-1.5 sm:gap-2"
+              className="bg-green-700 dark:bg-primary-container text-white dark:text-on-primary-fixed px-4 sm:px-6 py-2.5 rounded font-sans text-xs sm:text-sm font-bold tracking-wide hover:shadow-[0_0_20px_rgba(34,255,68,0.4)] hover:scale-105 transition-all duration-300 flex items-center gap-1.5 sm:gap-2"
             >
               <svg className="w-4 h-4 sm:w-5 sm:h-5 fill-current" viewBox="0 0 24 24"><path d="M21.41 11.58l-9-9C12.05 2.22 11.55 2 11 2H4c-1.1 0-2 .9-2 2v7c0 .55.22 1.05.59 1.42l9 9c.36.36.86.58 1.41.58.55 0 1.05-.22 1.41-.59l7-7c.37-.36.59-.86.59-1.41 0-.55-.23-1.06-.59-1.42zM5.5 7C4.67 7 4 6.33 4 5.5S4.67 4 5.5 4 7 4.67 7 5.5 6.33 7 5.5 7z"/></svg> BUY TICKETS
             </button>
@@ -473,7 +472,7 @@ function App() {
       </nav>
 
       {/* Mobile Drawer Navigation */}
-      <div className={`fixed inset-0 z-40 bg-black/60 backdrop-blur-md transition-opacity duration-300 md:hidden ${isMobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`} onClick={() => setIsMobileMenuOpen(false)}>
+      <div className={`fixed inset-0 z-[60] bg-black/60 backdrop-blur-md transition-opacity duration-300 md:hidden ${isMobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`} onClick={() => setIsMobileMenuOpen(false)}>
         <div className={`fixed right-0 top-0 bottom-0 w-[280px] bg-white/95 dark:bg-surface-container-lowest/95 backdrop-blur-2xl shadow-2xl p-6 flex flex-col pt-8 gap-6 border-l border-gray-200/50 dark:border-white/10 transition-transform duration-300 ease-out ${isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'}`} onClick={(e) => e.stopPropagation()}>
           {/* Drawer Title & Close Button */}
           <div className="flex justify-between items-center mb-2 border-b border-gray-200/30 dark:border-white/5 pb-4">
@@ -487,28 +486,28 @@ function App() {
             </button>
           </div>
           <a 
-            className="font-label-caps text-base text-gray-800 dark:text-secondary-fixed hover:text-green-700 dark:hover:text-primary-container transition-colors py-2 border-b border-gray-200/30 dark:border-white/5" 
+            className="font-sans text-lg font-semibold text-gray-800 dark:text-gray-100 hover:text-green-700 dark:hover:text-primary-container transition-colors py-3 border-b border-gray-200/30 dark:border-white/5" 
             href="#lineup"
             onClick={() => setIsMobileMenuOpen(false)}
           >
             Lineup
           </a>
           <a 
-            className="font-label-caps text-base text-gray-800 dark:text-secondary-fixed hover:text-green-700 dark:hover:text-primary-container transition-colors py-2 border-b border-gray-200/30 dark:border-white/5" 
+            className="font-sans text-lg font-semibold text-gray-800 dark:text-gray-100 hover:text-green-700 dark:hover:text-primary-container transition-colors py-3 border-b border-gray-200/30 dark:border-white/5" 
             href="#gallery"
             onClick={() => setIsMobileMenuOpen(false)}
           >
             Gallery
           </a>
           <a 
-            className="font-label-caps text-base text-gray-800 dark:text-secondary-fixed hover:text-green-700 dark:hover:text-primary-container transition-colors py-2 border-b border-gray-200/30 dark:border-white/5" 
+            className="font-sans text-lg font-semibold text-gray-800 dark:text-gray-100 hover:text-green-700 dark:hover:text-primary-container transition-colors py-3 border-b border-gray-200/30 dark:border-white/5" 
             href="#experience"
             onClick={() => setIsMobileMenuOpen(false)}
           >
             Experience
           </a>
           <a 
-            className="font-label-caps text-base text-gray-800 dark:text-secondary-fixed hover:text-green-700 dark:hover:text-primary-container transition-colors py-2 border-b border-gray-200/30 dark:border-white/5" 
+            className="font-sans text-lg font-semibold text-gray-800 dark:text-gray-100 hover:text-green-700 dark:hover:text-primary-container transition-colors py-3 border-b border-gray-200/30 dark:border-white/5" 
             href="#organizer"
             onClick={() => setIsMobileMenuOpen(false)}
           >
@@ -696,11 +695,7 @@ function App() {
                       loading="lazy"
                     />
                   </div>
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/20 to-transparent opacity-100 lg:opacity-0 lg:hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
-                    <p className="font-label-caps text-[9px] text-green-400 tracking-wider font-bold mb-1">{img.category}</p>
-                    <h4 className="font-headline-sm text-sm text-white font-bold leading-tight">{img.title}</h4>
-                    <p className="text-[10px] text-gray-400 mt-1 line-clamp-1">{img.alt}</p>
-                  </div>
+
                 </div>
               ))}
             </div>
@@ -922,17 +917,7 @@ function App() {
               alt={galleryImages[lightboxIndex].alt} 
               className="max-h-[60vh] md:max-h-[75vh] object-contain rounded-lg shadow-2xl border border-white/10"
             />
-            <div className="text-center mt-4 text-white px-4">
-              <p className="font-label-caps text-[10px] md:text-xs text-green-400 font-bold tracking-widest mb-1">
-                {galleryImages[lightboxIndex].category}
-              </p>
-              <h3 className="font-headline-sm text-sm sm:text-base md:text-lg font-bold">
-                {galleryImages[lightboxIndex].title}
-              </h3>
-              <p className="text-[10px] md:text-xs text-gray-400 mt-1 max-w-md mx-auto line-clamp-2 md:line-clamp-none">
-                {galleryImages[lightboxIndex].alt}
-              </p>
-            </div>
+
           </div>
 
           {/* Right Arrow */}
