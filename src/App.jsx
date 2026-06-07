@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef, Suspense, useCallback } from 'react';
-import lottie from 'lottie-web';
 
 /* ─── Flying Music Notes Component (Pure CSS 3D Effect) ─── */
 function FlyingNotes() {
@@ -79,8 +78,7 @@ function App() {
     }
   }, [showToast]);
 
-  const lottieContainer1 = useRef(null);
-  const lottieContainer2 = useRef(null);
+
 
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth < 1024);
@@ -240,32 +238,7 @@ function App() {
     return () => clearInterval(progressInterval);
   }, []);
 
-  // Lottie Animation Loading
-  useEffect(() => {
-    let anim1;
-    let anim2;
-    if (loading) {
-      anim1 = lottie.loadAnimation({
-        container: lottieContainer1.current,
-        renderer: 'svg',
-        loop: true,
-        autoplay: true,
-        path: '/56a034a2-116d-11ee-ade5-efd77f21c859.json',
-      });
 
-      anim2 = lottie.loadAnimation({
-        container: lottieContainer2.current,
-        renderer: 'svg',
-        loop: true,
-        autoplay: true,
-        path: '/e3be30c2-1150-11ee-9de2-dfa41e0fb27e.json',
-      });
-    }
-    return () => {
-      if (anim1) anim1.destroy();
-      if (anim2) anim2.destroy();
-    };
-  }, [loading]);
 
   // Intersection Observer for .reveal
   useEffect(() => {
@@ -367,11 +340,7 @@ function App() {
           <div id="loader-top"></div>
           <div id="loader-bottom"></div>
           
-          {/* Fullscreen Lottie Background Overlay */}
-          <div className="lottie-backdrop-container">
-            <div ref={lottieContainer1} className="lottie-visualizer-bg"></div>
-            <div ref={lottieContainer2} className="lottie-notes-bg"></div>
-          </div>
+
 
           {/* Immersive CSS-based 3D Flying Musical Notes Loader */}
           <FlyingNotes />
@@ -515,7 +484,7 @@ function App() {
           />
           
           {/* Wrapper for smooth image loading and entry transition */}
-          <div className={`transition-all duration-[1200ms] ease-out ${
+          <div className={`transition-all duration-[1200ms] ease-out lg:translate-x-[12%] xl:translate-x-[8%] 2xl:translate-x-[2%] ${
             bandImageLoaded ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-8 scale-95'
           }`}>
             {/* Cutout Image of Band Members with 3D Parallax */}
@@ -524,7 +493,7 @@ function App() {
               src="/band/daddy_cutout.webp"
               alt="Daddy Band Members"
               onLoad={() => setBandImageLoaded(true)}
-              className="relative max-h-[80vh] md:max-h-[85vh] object-contain w-auto right-0 lg:right-[2%] bottom-[-5%] transition-transform duration-300 ease-out drop-shadow-[0_20px_50px_rgba(34,255,68,0.15)] filter saturate-[1.1]"
+              className="relative max-h-[65vh] xl:max-h-[75vh] 2xl:max-h-[80vh] object-contain w-auto right-0 lg:right-[2%] bottom-[-5%] transition-transform duration-300 ease-out drop-shadow-[0_20px_50px_rgba(34,255,68,0.15)] filter saturate-[1.1]"
               style={{
                 transformStyle: 'preserve-3d',
                 willChange: 'transform'
@@ -536,7 +505,7 @@ function App() {
 
         {/* Hero Content Grid */}
         <div className="relative z-10 w-full max-w-container-max mx-auto px-4 md:px-gutter py-12 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center reveal">
-          <div className="lg:col-span-7 flex flex-col items-center lg:items-start text-center lg:text-left">
+          <div className="lg:col-span-6 flex flex-col items-center lg:items-start text-center lg:text-left">
             <p className="font-label-caps text-label-caps text-green-700 dark:text-green-400 mb-4 tracking-widest uppercase">The Ultimate Frequency</p>
             <h1 className="font-display-lg text-4xl sm:text-6xl lg:text-display-lg text-gray-900 dark:text-white mb-4 neon-glow leading-none floating-brand">EPILOGUE '26</h1>
             <p className="font-body-lg text-sm sm:text-body-lg text-gray-600 dark:text-secondary-fixed-dim mb-8 max-w-xl">
@@ -567,12 +536,15 @@ function App() {
             </div>
 
             {/* In-flow Band Cutout Image for Mobile/Tablet */}
-            <div className="lg:hidden w-full flex justify-center mb-8 mt-2">
+            <div className={`lg:hidden w-full flex justify-center mb-8 mt-2 transition-all duration-[1200ms] ease-out ${
+              bandImageLoaded ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-8 scale-95'
+            }`}>
               <div className="relative max-w-[320px] sm:max-w-[380px] w-full">
                 <div className="absolute inset-0 bg-gradient-to-tr from-green-500/10 to-cyan-500/10 rounded-full blur-[60px]" />
                 <img
-                  src="/band/daddy_cutout.png"
+                  src="/band/daddy_cutout.webp"
                   alt="Daddy Band Members"
+                  onLoad={() => setBandImageLoaded(true)}
                   className="relative max-h-[30vh] sm:max-h-[35vh] object-contain mx-auto drop-shadow-[0_15px_30px_rgba(34,255,68,0.2)] filter saturate-[1.1]"
                 />
               </div>
@@ -596,7 +568,7 @@ function App() {
           </div>
           
           {/* Right Column: Empty on desktop, hidden on mobile */}
-          <div className="hidden lg:block lg:col-span-5 pointer-events-none"></div>
+          <div className="hidden lg:block lg:col-span-6 pointer-events-none"></div>
         </div>
       </section>
 
