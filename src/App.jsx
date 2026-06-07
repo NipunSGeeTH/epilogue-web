@@ -737,12 +737,6 @@ function App() {
             </a>
           </div>
 
-          <div className="flex gap-6 mb-8">
-            <a className="font-body-md text-body-md text-gray-600 dark:text-secondary-fixed-dim hover:text-green-700 dark:hover:text-primary-fixed-dim transition-colors cursor-pointer" href="#">Privacy</a>
-            <a className="font-body-md text-body-md text-gray-600 dark:text-secondary-fixed-dim hover:text-green-700 dark:hover:text-primary-fixed-dim transition-colors cursor-pointer" href="#">Terms</a>
-            <a className="font-body-md text-body-md text-gray-600 dark:text-secondary-fixed-dim hover:text-green-700 dark:hover:text-primary-fixed-dim transition-colors cursor-pointer" href="#">Safety</a>
-            <a className="font-body-md text-body-md text-gray-600 dark:text-secondary-fixed-dim hover:text-green-700 dark:hover:text-primary-fixed-dim transition-colors cursor-pointer" href="#">Contact</a>
-          </div>
           <p className="font-label-caps text-label-caps text-secondary-container dark:text-secondary-fixed-dim text-xs">
             © 2026 EPILOGUE FESTIVAL. ALL RIGHTS RESERVED. HEADLINING: DADDY.
           </p>
