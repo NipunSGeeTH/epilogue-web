@@ -28,6 +28,26 @@ export default function Gallery({ galleryImages, openLightbox }) {
     return () => clearInterval(intervalId);
   }, [isSliderPaused]);
 
+  const scrollLeft = () => {
+    const slider = sliderRef.current;
+    if (!slider) return;
+    const card = slider.firstChild;
+    if (!card) return;
+    const cardWidth = card.offsetWidth;
+    const step = cardWidth + 24; // card width + gap-6 (24px)
+    slider.scrollBy({ left: -step, behavior: 'smooth' });
+  };
+
+  const scrollRight = () => {
+    const slider = sliderRef.current;
+    if (!slider) return;
+    const card = slider.firstChild;
+    if (!card) return;
+    const cardWidth = card.offsetWidth;
+    const step = cardWidth + 24; // card width + gap-6 (24px)
+    slider.scrollBy({ left: step, behavior: 'smooth' });
+  };
+
   return (
     <section className="py-20 px-4 md:px-gutter reveal bg-surface-container-lowest" id="gallery">
       <div className="max-w-container-max mx-auto relative px-4">
@@ -37,7 +57,23 @@ export default function Gallery({ galleryImages, openLightbox }) {
         </h2>
         
         {/* Horizontal Slider Wrapper */}
-        <div className="relative w-full">
+        <div className="relative w-full group/slider">
+          {/* Navigation Arrows (Desktop Only) */}
+          <button 
+            onClick={scrollLeft}
+            className="absolute left-[-12px] md:left-[-20px] top-1/2 transform -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-black/60 hover:bg-green-700 dark:hover:bg-primary-container text-white flex items-center justify-center shadow-lg hover:scale-105 active:scale-95 transition-all duration-300 opacity-0 group-hover/slider:opacity-100 hidden md:flex border border-white/10"
+            aria-label="Previous slide"
+          >
+            <span className="material-symbols-outlined !text-base">arrow_back_ios_new</span>
+          </button>
+          
+          <button 
+            onClick={scrollRight}
+            className="absolute right-[-12px] md:right-[-20px] top-1/2 transform -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-black/60 hover:bg-green-700 dark:hover:bg-primary-container text-white flex items-center justify-center shadow-lg hover:scale-105 active:scale-95 transition-all duration-300 opacity-0 group-hover/slider:opacity-100 hidden md:flex border border-white/10"
+            aria-label="Next slide"
+          >
+            <span className="material-symbols-outlined !text-base">arrow_forward_ios</span>
+          </button>
           {/* Scrollable Container */}
           <div 
             ref={sliderRef}
@@ -55,13 +91,22 @@ export default function Gallery({ galleryImages, openLightbox }) {
               <div 
                 key={idx} 
                 onClick={() => openLightbox(idx)}
-                className="flex-shrink-0 w-[85vw] sm:w-[50vw] md:w-[35vw] lg:w-[25vw] snap-start relative cursor-pointer overflow-hidden rounded-xl glass-panel border border-outline-variant/20 hover:border-green-700/50 dark:hover:border-primary-container/50 transition-all duration-500 shadow-lg hover:shadow-2xl"
+                className="flex-shrink-0 w-[85vw] sm:w-[50vw] md:w-[35vw] lg:w-[25vw] snap-start relative cursor-pointer overflow-hidden rounded-xl glass-panel border border-outline-variant/20 hover:border-green-700/50 dark:hover:border-primary-container/50 transition-all duration-500 shadow-lg hover:shadow-2xl aspect-[4/3]"
               >
-                <div className="aspect-[4/3] w-full overflow-hidden bg-black/20">
+                {/* Blurred background to fill empty spaces of varying aspect ratios elegantly */}
+                <img 
+                  src={img.src} 
+                  alt="" 
+                  className="absolute inset-0 w-full h-full object-cover blur-xl opacity-40 scale-110 pointer-events-none"
+                  aria-hidden="true"
+                />
+                
+                {/* Foreground image - object-contain ensures the original photo is fully visible and not cropped */}
+                <div className="absolute inset-0 flex items-center justify-center p-2 bg-black/10">
                   <img 
                     src={img.src} 
                     alt={img.alt} 
-                    className="w-full h-full object-cover transition-transform duration-700 hover:scale-110 saturate-[0.8] hover:saturate-[1.2]"
+                    className="max-w-full max-h-full object-contain rounded-lg shadow-md transition-transform duration-700 hover:scale-105 saturate-[0.9] hover:saturate-[1.1]"
                     loading="lazy"
                   />
                 </div>

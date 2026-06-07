@@ -95,8 +95,12 @@ export default function Organizer() {
           </div>
         </div>
         <div className="flex-1 w-full grid grid-cols-2 gap-4 z-10">
-          <img src={`${import.meta.env.BASE_URL}gallery/moraspirit_event_actual.png`} alt="MoraSpirit Coverage" className="rounded-2xl w-full h-32 sm:h-48 md:h-64 object-cover object-left shadow-lg hover:scale-105 transition-transform duration-500 border border-outline-variant/20" />
-          <img src={`${import.meta.env.BASE_URL}gallery/moraspirit_event_actual.png`} alt="MoraSpirit Crew" className="rounded-2xl w-full h-32 sm:h-48 md:h-64 object-cover object-right shadow-lg hover:scale-105 transition-transform duration-500 mt-8 border border-outline-variant/20" />
+          <div className="aspect-[3/4] w-full overflow-hidden rounded-2xl border border-outline-variant/20 shadow-lg hover:scale-105 transition-transform duration-500">
+            <img src={`${import.meta.env.BASE_URL}gallery/image4.jpeg`} alt="MoraSpirit Coverage" className="w-full h-full object-cover object-center" />
+          </div>
+          <div className="aspect-[3/4] w-full overflow-hidden rounded-2xl border border-outline-variant/20 shadow-lg hover:scale-105 transition-transform duration-500 mt-8">
+            <img src={`${import.meta.env.BASE_URL}gallery/image5.jpeg`} alt="MoraSpirit Crew" className="w-full h-full object-cover object-center" />
+          </div>
         </div>
       </div>
     </section>

@@ -148,7 +148,7 @@ export default function Hero() {
             <div className="relative max-w-[320px] sm:max-w-[380px] w-full">
               <div className="absolute inset-0 bg-gradient-to-tr from-green-500/10 to-cyan-500/10 rounded-full blur-[60px]" />
               <img
-                src={`${import.meta.env.BASE_URL}band/daddy_cutout.png`}
+                src={`${import.meta.env.BASE_URL}band/daddy_cutout.webp`}
                 alt="Daddy Band Members"
                 className="relative max-h-[30vh] sm:max-h-[35vh] object-contain mx-auto drop-shadow-[0_15px_30px_rgba(34,255,68,0.2)] filter saturate-[1.1]"
               />

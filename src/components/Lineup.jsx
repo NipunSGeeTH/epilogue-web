@@ -9,10 +9,10 @@ export default function Lineup() {
           <span className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 text-gray-900 dark:text-white opacity-100 text-lg sm:text-2xl lg:text-headline-md tracking-normal font-sans">HEADLINING</span>
         </h2>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div className="relative group overflow-hidden rounded-2xl glass-panel border-glow transition-all duration-500 shadow-2xl">
+          <div className="relative group overflow-hidden rounded-2xl glass-panel border-glow transition-all duration-500 shadow-2xl aspect-[4/3]">
             <img 
               alt="Daddy Band Portrait" 
-              className="w-full h-auto object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-500 grayscale group-hover:grayscale-0" 
+              className="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-500 grayscale group-hover:grayscale-0" 
               src={`${import.meta.env.BASE_URL}band/daddy_1.jpg`}
             />
             <div className="absolute inset-0 bg-gradient-to-t from-gray-50 dark:from-[#0c0f0f] via-transparent to-transparent"></div>
