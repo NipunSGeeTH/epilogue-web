@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && cp -r dist/* ../epilogue/public/",
+    "build": "vite build && (test -d ../epilogue/public && cp -r dist/* ../epilogue/public/ || true)",
     "lint": "eslint .",
     "preview": "vite preview"
   },
