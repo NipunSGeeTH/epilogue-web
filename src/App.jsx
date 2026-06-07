@@ -429,7 +429,7 @@ function App() {
             {/* Cutout Image of Band Members with 3D Parallax */}
             <img
               ref={bandRef}
-              src="/band/daddy_cutout.png"
+              src="/band/daddy_cutout.webp"
               alt="Daddy Band Members"
               onLoad={() => setBandImageLoaded(true)}
               className="relative max-h-[80vh] md:max-h-[85vh] object-contain w-auto right-0 lg:right-[2%] bottom-[-5%] transition-transform duration-300 ease-out drop-shadow-[0_20px_50px_rgba(34,255,68,0.15)] filter saturate-[1.1]"
