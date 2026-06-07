@@ -57,10 +57,11 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [loadProgress, setLoadProgress] = useState(0);
   const [splitLoader, setSplitLoader] = useState(false);
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 1024);
-  const [isDarkMode, setIsDarkMode] = useState(document.documentElement.classList.contains('dark'));
   const [showToast, setShowToast] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const lottieContainer1 = useRef(null);
+  const lottieContainer2 = useRef(null);
 
   const touchStartX = useRef(0);
   const touchEndX = useRef(0);
@@ -80,24 +81,8 @@ function App() {
 
 
 
-  useEffect(() => {
-    const handleResize = () => setIsMobile(window.innerWidth < 1024);
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
 
-  // Prevent scroll when mobile drawer is open
-  useEffect(() => {
-    if (isMobileMenuOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      // Avoid resetting overflow if lightbox is open
-      const isLightboxActive = document.querySelector('.fixed.inset-0.z-\\[100000\\]');
-      if (!isLightboxActive) {
-        document.body.style.overflow = 'auto';
-      }
-    }
-  }, [isMobileMenuOpen]);
+
 
   const [days, setDays] = useState('00');
   const [hours, setHours] = useState('00');
@@ -117,6 +102,17 @@ function App() {
   // Lightbox state
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState(0);
+
+  // Prevent scroll when loading (unless loader is splitting), mobile drawer, or lightbox is open
+  useEffect(() => {
+    if ((loading && !splitLoader) || isMobileMenuOpen || lightboxOpen) {
+      document.body.style.overflow = 'hidden';
+      document.documentElement.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+      document.documentElement.style.overflow = '';
+    }
+  }, [loading, splitLoader, isMobileMenuOpen, lightboxOpen]);
 
   const sliderRef = useRef(null);
   const [isSliderPaused, setIsSliderPaused] = useState(false);
@@ -150,12 +146,10 @@ function App() {
   const openLightbox = useCallback((index) => {
     setLightboxIndex(index);
     setLightboxOpen(true);
-    document.body.style.overflow = 'hidden';
   }, []);
 
   const closeLightbox = useCallback(() => {
     setLightboxOpen(false);
-    document.body.style.overflow = 'auto';
   }, []);
 
   const nextImage = useCallback((e) => {
@@ -202,7 +196,6 @@ function App() {
   // Force dark mode always
   useEffect(() => {
     document.documentElement.classList.add('dark');
-    setIsDarkMode(true);
   }, []);
 
   const heroRef = useRef(null);
@@ -213,6 +206,8 @@ function App() {
   // Simulated loading progress
   useEffect(() => {
     let progressInterval;
+    let timer1;
+    let timer2;
     let currentProgress = 0;
     
     progressInterval = setInterval(() => {
@@ -223,19 +218,20 @@ function App() {
       if (currentProgress >= 100) {
         clearInterval(progressInterval);
         
-        const timer1 = setTimeout(() => {
+        timer1 = setTimeout(() => {
           setSplitLoader(true);
-          const timer2 = setTimeout(() => {
+          timer2 = setTimeout(() => {
             setLoading(false);
-            document.body.style.overflow = 'auto';
           }, 600);
-          return () => clearTimeout(timer2);
         }, 200);
-        return () => clearTimeout(timer1);
       }
     }, 80);
 
-    return () => clearInterval(progressInterval);
+    return () => {
+      if (progressInterval) clearInterval(progressInterval);
+      if (timer1) clearTimeout(timer1);
+      if (timer2) clearTimeout(timer2);
+    };
   }, []);
 
 
@@ -383,10 +379,14 @@ function App() {
               <p className="font-label-caps text-[11px] text-green-400 tracking-widest animate-pulse uppercase">
                 Untangled Frequencies Coming...
               </p>
+              <p className="text-white/60 text-[10px] font-mono mt-3 tracking-widest">
+                {loadProgress}%
+              </p>
             </div>
           </div>
         </div>
       )}
+
 
       {/* Ambient Background Blobs */}
       <div className="ambient-blob top-0 left-[-20%]"></div>

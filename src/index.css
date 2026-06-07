@@ -57,7 +57,6 @@
     
     /* Smooth Scrolling and Width/Height Containment */
     html, body {
-        overflow-x: hidden;
         width: 100%;
         min-height: 100vh;
     }
@@ -185,6 +184,7 @@
     }
 
     /* Split Animation Classes */
+    #advanced-loader.split { pointer-events: none; }
     #advanced-loader.split #loader-top { transform: translateY(-100%); }
     #advanced-loader.split #loader-bottom { transform: translateY(100%); }
     #advanced-loader.split .loader-content { opacity: 0; transition: opacity 0.4s; }
