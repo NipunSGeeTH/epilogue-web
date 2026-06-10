@@ -8,13 +8,11 @@ import Experience from './components/Experience';
 import Organizer from './components/Organizer';
 import Footer from './components/Footer';
 import Lightbox from './components/Lightbox';
-import Toast from './components/Toast';
 
 function App() {
   const [loading, setLoading] = useState(true);
   const [loadProgress, setLoadProgress] = useState(0);
   const [splitLoader, setSplitLoader] = useState(false);
-  const [showToast, setShowToast] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState(0);
@@ -28,20 +26,7 @@ function App() {
     { src: `${import.meta.env.BASE_URL}gallery/image5.jpeg`, alt: 'Epilogue Gallery 5' },
   ];
 
-  // Callback to display ticket toast
-  const handleBuyTicketsClick = useCallback(() => {
-    setShowToast(true);
-  }, []);
 
-  // Auto-dismiss toast notification after 3 seconds
-  useEffect(() => {
-    if (showToast) {
-      const timer = setTimeout(() => {
-        setShowToast(false);
-      }, 3000);
-      return () => clearTimeout(timer);
-    }
-  }, [showToast]);
 
   // Prevent background scroll when loading, mobile drawer, or lightbox is open
   useEffect(() => {
@@ -134,7 +119,6 @@ function App() {
       <Navbar 
         isMobileMenuOpen={isMobileMenuOpen} 
         setIsMobileMenuOpen={setIsMobileMenuOpen} 
-        onBuyTicketsClick={handleBuyTicketsClick} 
       />
 
       {/* ──── CINEMATIC HERO ──── */}
@@ -166,9 +150,6 @@ function App() {
         index={lightboxIndex} 
         setIndex={setLightboxIndex} 
       />
-
-      {/* ──── TOAST NOTIFICATION ──── */}
-      <Toast show={showToast} />
     </div>
   );
 }
