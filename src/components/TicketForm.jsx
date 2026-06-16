@@ -559,7 +559,7 @@ export default function TicketForm({ isOpen, onClose }) {
             </div>
             <div className="max-w-md mx-auto text-sm text-gray-400 leading-relaxed bg-[#1e2020]/40 p-5 rounded-2xl border border-white/5 space-y-3">
               <p>
-                We have received your reservation and payment slip copy. Our team will verify the payment details shortly.
+                We have received your reservation and payment slip copy.
               </p>
               <div className="mt-6 p-5 bg-[#25D366]/10 border border-[#25D366]/20 rounded-xl text-center">
                 <p className="text-white font-semibold mb-4">Join our WhatsApp Group for updates!</p>
