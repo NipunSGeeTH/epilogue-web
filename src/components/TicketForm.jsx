@@ -10,7 +10,7 @@ export default function TicketForm({ isOpen, onClose }) {
     faculty: '',
     department: '',
     ticket_type: 'Standard',
-    num_tickets: '1',
+    num_tickets: 1,
   });
 
   const [paymentSlip, setPaymentSlip] = useState(null);
@@ -130,7 +130,7 @@ export default function TicketForm({ isOpen, onClose }) {
     try {
       const data = new FormData();
       Object.keys(formData).forEach((key) => {
-        data.append(key, formData[key]);
+        data.append(key, key === 'num_tickets' ? Number(formData[key]) : formData[key]);
       });
       data.append('payment_slip', paymentSlip);
 
@@ -143,9 +143,23 @@ export default function TicketForm({ isOpen, onClose }) {
       const result = await response.json();
 
       if (!response.ok) {
-        throw new Error(result.error || 'Failed to submit reservation.');
+        let errorMsg = result.error || result.message || 'Failed to submit reservation. Please try again.';
+        if (typeof errorMsg === 'object') errorMsg = 'A server error occurred. Please try again.';
+        throw new Error(errorMsg);
       }
 
+      setFormData({
+        buyer_name: '',
+        contact_number: '',
+        email: '',
+        index_number: '',
+        batch: '',
+        faculty: '',
+        department: '',
+        ticket_type: 'Standard',
+        num_tickets: 1,
+      });
+      setPaymentSlip(null);
       setSuccess(true);
     } catch (err) {
       setError(err.message || 'Something went wrong. Please try again.');
@@ -228,14 +242,14 @@ export default function TicketForm({ isOpen, onClose }) {
                 />
               </div>
               <div>
-                <label className="block text-xs font-semibold text-gray-400 tracking-wider uppercase mb-1.5">Index Number / NIC *</label>
+                <label className="block text-xs font-semibold text-gray-400 tracking-wider uppercase mb-1.5">Index Number *</label>
                 <input 
                   type="text" 
                   name="index_number"
                   value={formData.index_number}
                   onChange={handleInputChange}
                   required
-                  placeholder="Eg: 234567X or 20ME1234 / NIC"
+                  placeholder="Eg: 234567X or 20ME1234"
                   className="w-full bg-[#1e2020] border border-white/5 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-green-500/50 transition-colors"
                 />
               </div>
@@ -289,7 +303,8 @@ export default function TicketForm({ isOpen, onClose }) {
             </div>
 
             {/* Branching Category & Quantity */}
-            <div className="border-t border-white/5 pt-6">
+            {formData.batch && (
+              <div className="border-t border-white/5 pt-6">
               {formData.batch === 'Alumni' ? (
                 <div className="bg-green-950/20 border border-green-500/10 p-5 rounded-2xl flex flex-col md:flex-row md:items-center md:justify-between gap-4">
                   <div>
@@ -299,16 +314,23 @@ export default function TicketForm({ isOpen, onClose }) {
                   </div>
                   <div className="w-full md:w-32">
                     <label className="block text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1.5">Quantity</label>
-                    <select
-                      name="num_tickets"
-                      value={formData.num_tickets}
-                      onChange={handleInputChange}
-                      className="w-full bg-[#1a1d1d] border border-white/5 rounded-xl px-3 py-2 text-sm focus:outline-none"
-                    >
-                      {[1, 2, 3, 4, 5].map(n => (
-                        <option key={n} value={n}>{n}</option>
-                      ))}
-                    </select>
+                    <div className="flex items-center justify-between bg-[#1a1d1d] border border-white/5 rounded-xl px-3 py-2">
+                      <button 
+                        type="button" 
+                        onClick={() => setFormData(prev => ({ ...prev, num_tickets: Math.max(1, Number(prev.num_tickets) - 1) }))}
+                        className="text-gray-400 hover:text-white p-1 hover:bg-white/5 rounded"
+                      >
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M20 12H4"/></svg>
+                      </button>
+                      <span className="text-sm font-bold text-white">{formData.num_tickets}</span>
+                      <button 
+                        type="button" 
+                        onClick={() => setFormData(prev => ({ ...prev, num_tickets: Math.min(10, Number(prev.num_tickets) + 1) }))}
+                        className="text-gray-400 hover:text-white p-1 hover:bg-white/5 rounded"
+                      >
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 4v16m8-8H4"/></svg>
+                      </button>
+                    </div>
                   </div>
                 </div>
               ) : (
@@ -351,21 +373,29 @@ export default function TicketForm({ isOpen, onClose }) {
                   <div className="flex justify-end pt-2">
                     <div className="w-full md:w-40">
                       <label className="block text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1.5">Number of Tickets</label>
-                      <select
-                        name="num_tickets"
-                        value={formData.num_tickets}
-                        onChange={handleInputChange}
-                        className="w-full bg-[#1e2020] border border-white/5 rounded-xl px-4 py-3 text-sm focus:outline-none"
-                      >
-                        {[1, 2, 3, 4, 5].map(n => (
-                          <option key={n} value={n}>{n}</option>
-                        ))}
-                      </select>
+                      <div className="flex items-center justify-between bg-[#1e2020] border border-white/5 rounded-xl px-3 py-2.5">
+                        <button 
+                          type="button" 
+                          onClick={() => setFormData(prev => ({ ...prev, num_tickets: Math.max(1, Number(prev.num_tickets) - 1) }))}
+                          className="text-gray-400 hover:text-white p-1.5 hover:bg-white/5 rounded"
+                        >
+                          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M20 12H4"/></svg>
+                        </button>
+                        <span className="text-sm font-bold text-white px-2">{formData.num_tickets}</span>
+                        <button 
+                          type="button" 
+                          onClick={() => setFormData(prev => ({ ...prev, num_tickets: Math.min(10, Number(prev.num_tickets) + 1) }))}
+                          className="text-gray-400 hover:text-white p-1.5 hover:bg-white/5 rounded"
+                        >
+                          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 4v16m8-8H4"/></svg>
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>
               )}
-            </div>
+              </div>
+            )}
 
             {/* Total Price Display */}
             <div className="bg-[#1e2020] border border-white/5 p-4 rounded-2xl flex justify-between items-center">
@@ -402,7 +432,7 @@ export default function TicketForm({ isOpen, onClose }) {
 
               <div className="text-[11px] text-gray-400 leading-relaxed border-t border-white/5 pt-3 space-y-1">
                 <p>
-                  <strong>Important:</strong> Rename your receipt file to include your <strong>Index Number</strong> or <strong>NIC Number</strong>.
+                  <strong>Important:</strong> Rename your receipt file to include your <strong>Index Number</strong>.
                 </p>
                 <p className="text-[10px] text-gray-500">
                   Questions? Yasiru: 0783650000 | Nayomi: 0704587592
@@ -497,6 +527,21 @@ export default function TicketForm({ isOpen, onClose }) {
               <p>
                 We have received your reservation and payment slip copy. Our team will verify the payment details shortly.
               </p>
+              <div className="mt-6 p-5 bg-[#25D366]/10 border border-[#25D366]/20 rounded-xl text-center">
+                <p className="text-white font-semibold mb-4">Join our WhatsApp Group for updates!</p>
+                <a 
+                  href="https://chat.whatsapp.com/Ev35asw5Vat3ymGedal9xR" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#128C7E] text-white px-6 py-3 rounded-full font-bold transition-all shadow-[0_4px_15px_rgba(37,211,102,0.3)] hover:shadow-[0_6px_20px_rgba(37,211,102,0.4)] hover:-translate-y-0.5"
+                >
+                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                  </svg>
+                  Join WhatsApp Group
+                </a>
+              </div>
+            </div>
               <p className="text-xs text-gray-500">
                 Once approved, your e-ticket with a secure verification QR code will be sent to the email address: <strong>{formData.email}</strong>.
               </p>
