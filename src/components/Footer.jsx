@@ -2,7 +2,7 @@
 
 export default function Footer() {
   return (
-    <footer className="w-full py-16 bg-gray-50 dark:bg-surface-container-lowest border-t border-outline-variant/20 transition-colors duration-500 reveal">
+    <footer className="w-full py-16 bg-gray-50 dark:bg-surface-container-lowest border-t border-outline-variant/20 transition-colors duration-500">
       <div className="flex flex-col items-center gap-6 px-4 md:px-gutter text-center max-w-container-max mx-auto">
         <img 
           src={`${import.meta.env.BASE_URL}epilogue-logo.png`} 

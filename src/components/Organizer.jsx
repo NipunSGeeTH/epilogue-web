@@ -59,7 +59,7 @@ export default function Organizer() {
   ];
 
   return (
-    <section className="py-20 px-4 md:px-gutter reveal" id="organizer">
+    <section className="py-20 px-4 md:px-gutter" id="organizer">
       <div className="max-w-container-max mx-auto glass-panel p-6 sm:p-8 md:p-12 rounded-3xl border border-outline-variant/30 flex flex-col lg:flex-row items-center gap-12 shadow-2xl relative overflow-hidden">
         <div className="absolute top-0 right-0 w-64 h-64 bg-green-500/10 dark:bg-primary-container/10 rounded-full blur-3xl pointer-events-none" />
         <div className="flex-1 space-y-6 z-10">

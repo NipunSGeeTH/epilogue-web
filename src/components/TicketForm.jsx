@@ -456,13 +456,22 @@ export default function TicketForm({ isOpen, onClose }) {
                 </div>
               </div>
 
-              <div className="text-[11px] text-gray-400 leading-relaxed border-t border-white/5 pt-3 space-y-1">
+              <div className="text-[11px] text-gray-400 leading-relaxed border-t border-white/5 pt-3 space-y-2">
                 <p>
                   <strong>Important:</strong> Rename your receipt file to include your <strong>Index Number</strong>.
                 </p>
-                <p className="text-[12px] text-gray-200 font-medium mt-1">
-                  Questions? Yasiru: 0783650000 | Nayomi: 0704587592
-                </p>
+                <div className="text-xs text-gray-300 font-medium mt-3 bg-white/5 p-3 rounded-xl border border-white/10 flex flex-wrap gap-x-4 gap-y-2 items-center justify-center sm:justify-start">
+                  <span className="text-green-400 font-bold uppercase tracking-wider text-[10px] bg-green-500/10 px-2 py-0.5 rounded border border-green-500/20">Questions?</span>
+                  <span className="flex items-center gap-1">
+                    <span className="text-gray-400">Yasiru:</span>
+                    <a href="tel:0783650000" className="hover:text-green-400 hover:underline font-mono text-gray-200 transition-colors">0783650000</a>
+                  </span>
+                  <span className="hidden sm:inline text-gray-600">|</span>
+                  <span className="flex items-center gap-1">
+                    <span className="text-gray-400">Nayomi:</span>
+                    <a href="tel:0704587592" className="hover:text-green-400 hover:underline font-mono text-gray-200 transition-colors">0704587592</a>
+                  </span>
+                </div>
               </div>
             </div>
 

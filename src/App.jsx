@@ -105,7 +105,7 @@ function App() {
   }, []);
 
   return (
-    <div className="overflow-x-hidden w-full relative min-h-screen">
+    <div className="overflow-x-clip w-full relative min-h-screen">
       {/* ──── IMMERSIVE LOADER ──── */}
       <Loader 
         loading={loading} 
