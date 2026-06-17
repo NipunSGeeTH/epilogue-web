@@ -460,7 +460,7 @@ export default function TicketForm({ isOpen, onClose }) {
                 <p>
                   <strong>Important:</strong> Rename your receipt file to include your <strong>Index Number</strong>.
                 </p>
-                <p className="text-[10px] text-gray-500">
+                <p className="text-[12px] text-gray-200 font-medium mt-1">
                   Questions? Yasiru: 0783650000 | Nayomi: 0704587592
                 </p>
               </div>
