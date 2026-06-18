@@ -117,6 +117,11 @@ export default function Hero() {
         const contentScale = 1 - progress * 0.1;
         const contentOpacity = Math.max(0, 1 - progress * 1.5);
 
+        // Mobile Band Image scales up and fades out
+        const mobileBandScale = 1 + progress * 0.8;
+        const mobileBandY = -progress * 150;
+        const mobileBandOpacity = Math.max(0, 1 - progress * 1.2);
+
         return (
           <section ref={heroRef} className="relative min-h-screen flex items-center pt-24 overflow-hidden bg-[#0c0f0f] w-full" id="hero-section">
             <div ref={cursorRef} id="cursor-glow"></div>
@@ -176,51 +181,61 @@ export default function Hero() {
             </div>
 
             {/* Hero Content Grid */}
-            <div 
-              className="relative z-10 w-full max-w-container-max mx-auto px-4 md:px-gutter py-12 hero-content-wrapper"
-              style={{
-                transform: `translateY(${contentY}px) scale(${contentScale})`,
-                opacity: contentOpacity,
-                willChange: 'transform, opacity'
-              }}
-            >
+            <div className="relative z-10 w-full max-w-container-max mx-auto px-4 md:px-gutter py-12 hero-content-wrapper">
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
                 <div className="lg:col-span-7 flex flex-col items-center lg:items-start text-center lg:text-left">
 
-                  <img 
-                    src={`${import.meta.env.BASE_URL}epilogue-logo.png`} 
-                    alt="EPILOGUE '26" 
-                    className="h-16 sm:h-20 md:h-24 lg:h-28 w-auto object-contain mb-4 floating-brand filter drop-shadow-[0_0_20px_rgba(34,255,68,0.2)]" 
-                  />
-                  <p className="font-body-lg text-sm sm:text-body-lg text-gray-600 dark:text-secondary-fixed-dim mb-8 max-w-xl">
-                    A night where music transcends boundaries. One stage. Unlimited frequencies.
-                  </p>
+                  {/* Top Text Block */}
+                  <div 
+                    className="w-full flex flex-col items-center lg:items-start"
+                    style={{
+                      transform: `translateY(${contentY}px) scale(${contentScale})`,
+                      opacity: contentOpacity,
+                      willChange: 'transform, opacity'
+                    }}
+                  >
+                    <img 
+                      src={`${import.meta.env.BASE_URL}epilogue-logo.png`} 
+                      alt="EPILOGUE '26" 
+                      className="h-16 sm:h-20 md:h-24 lg:h-28 w-auto object-contain mb-4 floating-brand filter drop-shadow-[0_0_20px_rgba(34,255,68,0.2)]" 
+                    />
+                    <p className="font-body-lg text-sm sm:text-body-lg text-gray-600 dark:text-secondary-fixed-dim mb-8 max-w-xl">
+                      A night where music transcends boundaries. One stage. Unlimited frequencies.
+                    </p>
 
-                  {/* Visual Countdown Box (Left-aligned) */}
-                  <div className="glass-panel p-6 md:p-8 rounded-2xl border border-primary-container/30 shadow-2xl relative w-full max-w-[420px] transition-all duration-300 hover:border-green-700/50 dark:hover:border-primary-container/50 mb-8 self-center lg:self-start">
-                    <h3 className="font-label-caps text-xs text-green-700 dark:text-primary-container tracking-widest uppercase mb-4 text-center lg:text-left font-bold">
-                      FREQUENCY LOCKING IN...
-                    </h3>
-                    <div className="flex gap-2 sm:gap-3 md:gap-4 justify-center lg:justify-start">
-                      {[
-                        { value: days, label: 'DAYS' },
-                        { value: hours, label: 'HRS' },
-                        { value: minutes, label: 'MINS' },
-                        { value: seconds, label: 'SECS' },
-                      ].map((item, idx) => (
-                        <React.Fragment key={item.label}>
-                          {idx > 0 && <div className="text-green-700 dark:text-primary-container text-2xl md:text-headline-lg self-start mt-1 animate-pulse">:</div>}
-                          <div className="flex flex-col items-center">
-                            <span className="text-2xl sm:text-3xl md:text-headline-lg font-headline-lg font-mono countdown-digit text-gray-900 dark:text-white">{item.value}</span>
-                            <span className="font-label-caps text-[9px] text-secondary-container dark:text-secondary-fixed-dim mt-2 tracking-widest font-bold">{item.label}</span>
-                          </div>
-                        </React.Fragment>
-                      ))}
+                    {/* Visual Countdown Box (Left-aligned) */}
+                    <div className="glass-panel p-6 md:p-8 rounded-2xl border border-primary-container/30 shadow-2xl relative w-full max-w-[420px] transition-all duration-300 hover:border-green-700/50 dark:hover:border-primary-container/50 mb-8 self-center lg:self-start">
+                      <h3 className="font-label-caps text-xs text-green-700 dark:text-primary-container tracking-widest uppercase mb-4 text-center lg:text-left font-bold">
+                        FREQUENCY LOCKING IN...
+                      </h3>
+                      <div className="flex gap-2 sm:gap-3 md:gap-4 justify-center lg:justify-start">
+                        {[
+                          { value: days, label: 'DAYS' },
+                          { value: hours, label: 'HRS' },
+                          { value: minutes, label: 'MINS' },
+                          { value: seconds, label: 'SECS' },
+                        ].map((item, idx) => (
+                          <React.Fragment key={item.label}>
+                            {idx > 0 && <div className="text-green-700 dark:text-primary-container text-2xl md:text-headline-lg self-start mt-1 animate-pulse">:</div>}
+                            <div className="flex flex-col items-center">
+                              <span className="text-2xl sm:text-3xl md:text-headline-lg font-headline-lg font-mono countdown-digit text-gray-900 dark:text-white">{item.value}</span>
+                              <span className="font-label-caps text-[9px] text-secondary-container dark:text-secondary-fixed-dim mt-2 tracking-widest font-bold">{item.label}</span>
+                            </div>
+                          </React.Fragment>
+                        ))}
+                      </div>
                     </div>
                   </div>
 
                   {/* In-flow Band Cutout Image for Mobile/Tablet */}
-                  <div className="lg:hidden w-full flex justify-center mb-8 mt-2">
+                  <div 
+                    className="lg:hidden w-full flex justify-center mb-8 mt-2"
+                    style={{
+                      transform: `translateY(${mobileBandY}px) scale(${mobileBandScale})`,
+                      opacity: mobileBandOpacity,
+                      willChange: 'transform, opacity'
+                    }}
+                  >
                     <div className="relative max-w-[320px] sm:max-w-[380px] w-full">
                       <div className="absolute inset-0 bg-gradient-to-tr from-green-500/10 to-cyan-500/10 rounded-full blur-[60px]" />
                       <img
@@ -231,19 +246,28 @@ export default function Hero() {
                     </div>
                   </div>
 
-                  {/* Event Info Bar */}
-                  <div className="flex flex-wrap justify-center lg:justify-start gap-4 sm:gap-6 md:gap-8 mt-4">
-                    <div className="flex items-center gap-2 text-gray-600 dark:text-secondary-fixed-dim">
-                      <svg className="w-5 h-5 text-green-700 dark:text-primary-container fill-current" viewBox="0 0 24 24"><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zm0-12H5V6h14v2z"/></svg>
-                      <span className="font-body-md text-sm sm:text-body-md">July 28, 2026</span>
-                    </div>
-                    <div className="flex items-center gap-2 text-gray-600 dark:text-secondary-fixed-dim">
-                      <svg className="w-5 h-5 text-green-700 dark:text-primary-container fill-current" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-                      <span className="font-body-md text-sm sm:text-body-md">Venue : Lagaan</span>
-                    </div>
-                    <div className="flex items-center gap-2 text-gray-600 dark:text-secondary-fixed-dim">
-                      <svg className="w-5 h-5 text-green-700 dark:text-primary-container fill-current" viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
-                      <span className="font-body-md text-sm sm:text-body-md">6:00 PM Onwards</span>
+                  {/* Bottom Text Block: Event Info Bar */}
+                  <div 
+                    className="w-full"
+                    style={{
+                      transform: `translateY(${contentY}px) scale(${contentScale})`,
+                      opacity: contentOpacity,
+                      willChange: 'transform, opacity'
+                    }}
+                  >
+                    <div className="flex flex-wrap justify-center lg:justify-start gap-4 sm:gap-6 md:gap-8 mt-4">
+                      <div className="flex items-center gap-2 text-gray-600 dark:text-secondary-fixed-dim">
+                        <svg className="w-5 h-5 text-green-700 dark:text-primary-container fill-current" viewBox="0 0 24 24"><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zm0-12H5V6h14v2z"/></svg>
+                        <span className="font-body-md text-sm sm:text-body-md">July 28, 2026</span>
+                      </div>
+                      <div className="flex items-center gap-2 text-gray-600 dark:text-secondary-fixed-dim">
+                        <svg className="w-5 h-5 text-green-700 dark:text-primary-container fill-current" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                        <span className="font-body-md text-sm sm:text-body-md">Venue : Lagaan</span>
+                      </div>
+                      <div className="flex items-center gap-2 text-gray-600 dark:text-secondary-fixed-dim">
+                        <svg className="w-5 h-5 text-green-700 dark:text-primary-container fill-current" viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+                        <span className="font-body-md text-sm sm:text-body-md">6:00 PM Onwards</span>
+                      </div>
                     </div>
                   </div>
                 </div>
